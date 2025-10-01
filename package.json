@@ -1,0 +1,30 @@
+{
+  "name": "aa_veeb",
+  "version": "1.0.0",
+  "description": "Veebiprogrammeerimise kurusel loodud veeb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://andrusrinde@github.com/andrusrinde/AA_veeb.git"
+  },
+  "keywords": [
+    "Tallinna",
+    "Ülikool",
+    "DTI",
+    "veebiprogrammeerimine",
+    "Node.js",
+    "Express.js"
+  ],
+  "author": "Andrus Rinde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrusrinde/AA_veeb/issues"
+  },
+  "homepage": "https://github.com/andrusrinde/AA_veeb#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
