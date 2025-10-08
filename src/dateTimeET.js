@@ -15,4 +15,8 @@ const tellTimeET = function(){
 	return timeNow.getHours() + ":" + timeNow.getMinutes() + ":" + timeNow.getSeconds();
 }
 
-module.exports = {longDate: tellDateET, weekDay: tellWeekDayET, time: tellTimeET};
+module.exports = {
+	longDate: tellDateET,
+	weekDay: tellWeekDayET,
+	time: tellTimeET
+};

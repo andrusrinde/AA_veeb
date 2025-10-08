@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="utf-8">
+  <title>Andrus Rinde, veebiprogrammeerimine</title>
+</head>
+<body>
+  <img src="/images/vp_banner_2025_AA.jpg" alt="Kursuse bänner">
+  <h1>Andrus Rinde, veebiprogrammeerimine</h1>
+  <p>See leht on loodud <a href="https://www.tlu.ee">Tallinna Ülikoolis</a> veebiprogrammeerimise kurusel ja ei oma mõistlikku sisu.</p>
+  <hr>
+  <ul>
+	<li><a href="/">Avalehele</a></li>
+	<li><a href="/eestifilm">Eesti filmi avaleht</a></li>
+  </ul>
+  <h2>Eesti filmiga seotud inimesed</h2>
+  <ul><% personList.forEach(function(listItem){ %>
+	<li><%= listItem.first_name %> <%= listItem.last_name %>, sündinud <%= listItem.born %></li>
+	<% }); %>
+  </ul>
+</body>
+</html>
