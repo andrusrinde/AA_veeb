@@ -5,19 +5,19 @@
   <title>Andrus Rinde, veebiprogrammeerimine</title>
 </head>
 <body>
-  <img src="images/vp_banner_2025_AA.jpg" alt="Kursuse bänner">
+  <img src="/images/vp_banner_2025_AA.jpg" alt="Kursuse bänner">
   <h1>Andrus Rinde, veebiprogrammeerimine</h1>
   <p>See leht on loodud <a href="https://www.tlu.ee">Tallinna Ülikoolis</a> veebiprogrammeerimise kurusel ja ei oma mõistlikku sisu.</p>
   <hr>
   <ul>
 	<li><a href="/">Avalehele</a></li>
+	<li><a href="/eestifilm">Eesti filmi avaleht</a></li>
+  <li><a href="/eestifilm/ametid_add">Filmiga seotud ameti lisamine</a></li>
   </ul>
-  <h2>Eesti film</h2>
-  <ul>
-	<li><a href="/eestifilm/filmiinimesed">Eesti filmiga seotud inimesed</a></li>
-	<li><a href="/eestifilm/filmiinimesed_add">Eesti filmiga seotud inimeste lisamine</a></li>
-  <li><a href="/eestifilm/ametid">Filmiga seotud ametid</a></li>
-	<li><a href="/eestifilm/ametid_add">Lisa filmiga seotud ameteid</a></li>
+  <h2>Filmidega seotud inimesed</h2>
+  <ul><% positionList.forEach(function(listItem){ %>
+	  <li><%= listItem.position_name %> | <%= listItem.description %></li>
+	  <% }); %>
   </ul>
 </body>
 </html>
