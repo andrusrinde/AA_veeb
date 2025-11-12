@@ -33,7 +33,9 @@ app.get("/", async (req, res)=>{
 		res.render("index", {imgFile: "gallery/normal/" + rows[0].filename, imgAlt: imgAlt});
 	}
 	catch(err){
-		res.render("index");
+		console.log(err);
+		//res.render("index");
+		res.render("index", {imgFile: "images/otsin_pilte.jpg", imgAlt: "Tunnen end, kui pilti otsiv lammas ..."});
 	}
 	finally {
 		if(conn){
@@ -105,5 +107,9 @@ app.use("/eestifilm", eestifilmRouter);
 //Galeriipildi üleslaadimise marsruudid
 const galleryphotouploadRouter = require("./routes/galleryphotouploadRoutes");
 app.use("/galleryphotoupload", galleryphotouploadRouter);
+
+//Fotogalerii marsruudid
+const photogalleryRouter = require("./routes/photogalleryRoutes");
+app.use("/photogallery", photogalleryRouter);
 
 app.listen(5300);
