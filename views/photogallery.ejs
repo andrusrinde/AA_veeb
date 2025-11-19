@@ -7,7 +7,7 @@
   <script src="/script/gallery.js" defer></script>
 </head>
 <body>
-  <img src="images/vp_banner_2025_AA.jpg" alt="Kursuse bänner">
+  <img src="/images/vp_banner_2025_AA.jpg" alt="Kursuse bänner">
   <h1>Andrus Rinde, veebiprogrammeerimine</h1>
   <p>See leht on loodud <a href="https://www.tlu.ee">Tallinna Ülikoolis</a> veebiprogrammeerimise kurusel ja ei oma mõistlikku sisu.</p>
   <hr>
@@ -24,6 +24,7 @@
 		</div>
 	</div>
   </dialog>
+  <p><%- galleryLinks %></p>
   <div id="gallery" class="gallery">
 	  <% galleryData.forEach(function(image){ %>
 		<img src="<%=imagehref%><%=image.src%>" alt="<%=image.alt%>" class="thumbs" data-filename="<%=image.src%>">
