@@ -11,18 +11,22 @@ const dbConf = {
 
 //@desc Home page for photogallery
 //@route GET /photogallery
-//@access public
+//@access private
 
 const photogalleryHome = (req, res)=>{
 	res.redirect("/photogallery/1");
 };
+
+//@desc page for photogallery
+//@route GET /photogallery/:page
+//@access private
 
 const photogalleryPage = async (req, res)=>{
 	let conn;
 	const photoLimit = 5;
 	const privacy = 2;
 	let page = parseInt(req.params.page);
-	console.log("Lehekülg: " + page);
+	//console.log("Lehekülg: " + page);
 	let skip = 0;
 	
 	try {
@@ -81,7 +85,7 @@ const photogalleryPage = async (req, res)=>{
 	finally {
 		if(conn){
 			await conn.end();
-			console.log("Andmebaasiühendus suletud!");
+			//console.log("Andmebaasiühendus suletud!");
 		}
 	}
 };

@@ -13,7 +13,7 @@ const dbConf = {
 
 //@desc Home page for uploading gallery photos
 //@route GET /galleryphotoupload
-//@access public
+//@access private
 
 const galleryphotouploadPage = (req, res)=>{
 	res.render("galleryphotoupload");
@@ -21,15 +21,15 @@ const galleryphotouploadPage = (req, res)=>{
 
 //@desc page for adding gallery photos
 //@route POST /galleryphotoupload
-//@access public
+//@access private
 
 const galleryphotouploadPagePost = async (req, res)=>{
 	let conn;
-	console.log(req.body);
-	console.log(req.file);
+	//console.log(req.body);
+	//console.log(req.file);
 	try {
 		const fileName = "vp_" + Date.now() + ".jpg";
-		console.log(fileName);
+		//console.log(fileName);
 		await fs.rename(req.file.path, req.file.destination + fileName);
 		//kontrollin, kas vesimärgi fail on olemas
 		const watermarkSettings = [{
@@ -41,11 +41,11 @@ const galleryphotouploadPagePost = async (req, res)=>{
              // Tühjendame seaded, et vesimärki ei proovitaks lisada
              watermarkSettings.length = 0; 
         }
-		console.log("Muudan suurust: 800X600");
+		//console.log("Muudan suurust: 800X600");
 		//loon normaalmõõdus foto (800X600)
 		//await sharp(req.file.destination + fileName).resize(800,600).jpeg({quality: 90}).toFile("./public/gallery/normal/" + fileName);
 		 let normalImageProcessor = await sharp(req.file.destination + fileName).resize(800, 600).jpeg({quality: 90});
-        console.log("Lisan vesimärgi" + watermarkSettings.length);    
+        //console.log("Lisan vesimärgi" + watermarkSettings.length);    
         if (watermarkSettings.length > 0) {
             normalImageProcessor = await normalImageProcessor.composite(watermarkSettings);
         }
@@ -55,9 +55,9 @@ const galleryphotouploadPagePost = async (req, res)=>{
 		conn= await mysql.createConnection(dbConf);
 		let sqlReq = "INSERT INTO galleryphotos_aa (filename, origname, alttext, privacy, userid) VALUES(?,?,?,?,?)";
 		//Kuna kasutajakontosid ja nende id-sid veel pole, siis ...
-		const userId = 1;
+		const userId = req.session.userId;
 		const [result] = await conn.execute(sqlReq, [fileName, req.file.originalname, req.body.altInput, req.body.privacyInput, userId]);
-		console.log("Lisati foto id: " + result.insertId);
+		//console.log("Lisati foto id: " + result.insertId);
 		res.render("galleryphotoupload");
 	}
 	catch(err){
@@ -67,7 +67,7 @@ const galleryphotouploadPagePost = async (req, res)=>{
 	finally {
 		if(conn){
 			await conn.end();
-			console.log("Andmebaasiühendus suletud!");
+			//console.log("Andmebaasiühendus suletud!");
 		}
 	}
 };
